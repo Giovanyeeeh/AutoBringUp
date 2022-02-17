@@ -27,8 +27,8 @@ else
 	printf "There's no file .dependencies in /device/motorola/channel ignoring\n!!"
 fi
 
-if [[ -f "$oldrom"_river.mk ]]; then
-	mv "$oldrom"_river.mk "$newrom"_river.mk
+if [[ -f "$oldrom"_channel.mk ]]; then
+	mv "$oldrom"_channel.mk "$newrom"_channel.mk
 	sed -i 's/'"$oldrom"'/'"$newrom"'/g' ./*.*
 	cd ../../../
 else
