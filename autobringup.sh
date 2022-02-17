@@ -14,8 +14,8 @@ read -r -p "Please enter the name of the old rom: " oldrom
 read -r -p "Now please enter the name of the new rom: " newrom
 printf "\n\n"
 
-if [[ -d "device/motorola/river" ]]; then
-	cd device/motorola/river || exit
+if [[ -d "device/motorola/channel" ]]; then
+	cd device/motorola/channel || exit
 else
 	printf "path to device doesn't exist!!\n"
 	exit 1
@@ -24,7 +24,7 @@ fi
 if [[ -f "$oldrom.dependencies" ]]; then
 	mv "$oldrom".dependencies "$newrom".dependencies || :
 else 
-	printf "There's no file .dependencies in /device/motorola/river ignoring\n!!"
+	printf "There's no file .dependencies in /device/motorola/channel ignoring\n!!"
 fi
 
 if [[ -f "$oldrom"_river.mk ]]; then
