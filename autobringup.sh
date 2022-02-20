@@ -14,8 +14,8 @@ read -r -p "Please enter the name of the old rom: " oldrom
 read -r -p "Now please enter the name of the new rom: " newrom
 printf "\n\n"
 
-if [[ -d "device/motorola/channel" ]]; then
-	cd device/motorola/channel || exit
+if [[ -d "device/motorola/nash" ]]; then
+	cd device/motorola/nash || exit
 else
 	printf "path to device doesn't exist!!\n"
 	exit 1
@@ -24,7 +24,7 @@ fi
 if [[ -f "$oldrom.dependencies" ]]; then
 	mv "$oldrom".dependencies "$newrom".dependencies || :
 else 
-	printf "There's no file .dependencies in /device/motorola/channel ignoring\n!!"
+	printf "There's no file .dependencies in /device/motorola/nash ignoring\n!!"
 fi
 
 if [[ -f "$oldrom"_channel.mk ]]; then
@@ -36,20 +36,11 @@ else
 	exit 1
 fi
 
-if [[ -d "device/motorola/sdm632-common" ]]; then 
-	cd device/motorola/sdm632-common|| exit
-else 
-	printf "path to device doesn't exist"
-	exit1
-fi
-
 if [[ -f "$oldrom.dependencies" ]]; then
 	mv "$oldrom".dependencies "$newrom".dependencies || :
 	sed -i 's/'"$oldrom"'/'"$newrom"'/g' ./*.*
 	cd ../../../
 else
-	printf "There's no file .dependencies in /device/motorola/sdm632-common ignoring\n!!"
-fi
 
 printf "\n\n"
 printf "your bring up is finished\n to start type\nsource build/envsetup.sh\n and lunch \n"
